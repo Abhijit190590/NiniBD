@@ -727,9 +727,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const splashOverlay = $('#splashOverlay');
   const splashBtn = $('#splashBtn');
 
+  // Lock scroll while splash is showing
+  document.body.style.overflow = 'hidden';
+
   if (splashBtn) {
     splashBtn.addEventListener('click', () => {
-      // Hide splash with fade
+      // Unlock scroll and hide splash
+      document.body.style.overflow = '';
       splashOverlay.classList.add('hidden');
 
       // Start music — this is a real user gesture, so browsers WILL allow it
