@@ -437,6 +437,50 @@ function initVideos() {
   modalClose.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+  // Pause background music when a video plays; resume when video stops
+  const bgMusic = $('#bgMusic');
+  const musicBtn = $('#musicToggle');
+
+  $$('video').forEach(vid => {
+    vid.addEventListener('play', () => {
+      if (bgMusic && !bgMusic.paused) {
+        bgMusic.pause();
+        if (musicBtn) musicBtn.classList.remove('playing');
+        const lbl = musicBtn && musicBtn.querySelector('.music-label');
+        const ico = musicBtn && musicBtn.querySelector('.music-icon');
+        if (lbl) lbl.textContent = 'Play Music';
+        if (ico) ico.textContent = '🎵';
+      }
+    });
+
+    vid.addEventListener('pause', () => {
+      // Resume music only if ALL videos are paused
+      const anyPlaying = $$('video').some(v => !v.paused);
+      if (!anyPlaying && bgMusic && bgMusic.paused) {
+        bgMusic.play().then(() => {
+          if (musicBtn) musicBtn.classList.add('playing');
+          const lbl = musicBtn && musicBtn.querySelector('.music-label');
+          const ico = musicBtn && musicBtn.querySelector('.music-icon');
+          if (lbl) lbl.textContent = 'Pause Music';
+          if (ico) ico.textContent = '🎶';
+        }).catch(() => {});
+      }
+    });
+
+    vid.addEventListener('ended', () => {
+      const anyPlaying = $$('video').some(v => !v.paused);
+      if (!anyPlaying && bgMusic && bgMusic.paused) {
+        bgMusic.play().then(() => {
+          if (musicBtn) musicBtn.classList.add('playing');
+          const lbl = musicBtn && musicBtn.querySelector('.music-label');
+          const ico = musicBtn && musicBtn.querySelector('.music-icon');
+          if (lbl) lbl.textContent = 'Pause Music';
+          if (ico) ico.textContent = '🎶';
+        }).catch(() => {});
+      }
+    });
+  });
 }
 
 /* ============================================================
