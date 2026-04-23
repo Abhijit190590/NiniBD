@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Pratikhya Sahoo 🎉</title>
+  <meta name="description"
+    content="A special birthday celebration page for Pratikhya Sahoo – from her best friend, with love and wonderful memories." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ========== SPLASH / ENTER OVERLAY ========== -->
+  <div class="splash-overlay" id="splashOverlay">
+    <div class="splash-content">
+      <div class="splash-emoji">🎉</div>
+      <h1 class="splash-title">Happy Birthday<br><span>Pratikhya Sahoo</span></h1>
+      <p class="splash-sub">A special surprise is waiting for you ✨</p>
+      <button class="splash-btn" id="splashBtn">
+        <span>🎵 Enter & Play Music</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========== CONFETTI CANVAS ========== -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- ========== FLOATING ELEMENTS ========== -->
+  <div class="floaters" aria-hidden="true">
+    <span class="floater balloon">🎈</span>
+    <span class="floater balloon">🎀</span>
+    <span class="floater star">✨</span>
+    <span class="floater balloon">🎊</span>
+    <span class="floater star">⭐</span>
+    <span class="floater balloon">🎈</span>
+    <span class="floater star">✨</span>
+    <span class="floater balloon">🎀</span>
+    <span class="floater star">🌸</span>
+    <span class="floater balloon">🎉</span>
+  </div>
+
+  <!-- ========== MUSIC PLAYER ========== -->
+  <div class="music-player" id="musicPlayer" title="Background Music">
+    <button class="music-btn" id="musicToggle" aria-label="Play background music">
+      <span class="music-icon">🎵</span>
+      <span class="music-label">Play Music</span>
+    </button>
+    <audio id="bgMusic" loop autoplay>
+      <!-- Replace src with your chosen song file path, e.g. "Music/music.mp3" -->
+      <source src="Music/music.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">🌸 Pratikhya's Day</div>
+    <ul class="nav-links">
+      <li><a href="#welcome">Home</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#message">Message</a></li>
+      <li><a href="#surprise">Surprise</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ========== MOBILE NAV ========== -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="#welcome" class="mobile-nav-link">🏠 Home</a></li>
+      <li><a href="#gallery" class="mobile-nav-link">📸 Gallery</a></li>
+      <li><a href="#videos" class="mobile-nav-link">🎬 Videos</a></li>
+      <li><a href="#message" class="mobile-nav-link">💌 Message</a></li>
+      <li><a href="#surprise" class="mobile-nav-link">🎁 Surprise</a></li>
+    </ul>
+  </div>
+
+  <!-- ========== HERO / WELCOME SECTION ========== -->
+  <section class="welcome-section" id="welcome">
+    <div class="welcome-bg-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+    </div>
+
+    <div class="welcome-content">
+      <div class="date-badge reveal">10th May</div>
+
+      <h1 class="welcome-title">
+        <span class="title-line reveal-delay-1">Happy Birthday</span>
+        <span class="title-name reveal-delay-2">Pratikhya Sahoo</span>
+        <span class="title-emoji reveal-delay-3">🎉</span>
+      </h1>
+
+      <p class="welcome-subtitle reveal-delay-4">To my best friend — my sunshine, my constant, my forever buddy 🌸</p>
+
+      <div class="age-display reveal-delay-5">
+        <div class="cake-container">
+          <div class="cake">🎂</div>
+          <div class="cake-text">Wishing you a day as beautiful as you are!</div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator reveal-delay-5">
+        <span>Scroll to explore</span>
+        <div class="scroll-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PHOTO GALLERY SECTION ========== -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-header">
+      <span class="section-tag">📸 Memories</span>
+      <h2 class="section-title reveal">Friends Moments</h2>
+      <p class="section-subtitle reveal">Every photo a story, every story a treasure 🌸</p>
+    </div>
+
+    <!-- Gallery Filter Tabs -->
+    <div class="gallery-tabs reveal">
+      <button class="gallery-tab active" data-filter="all">All Moments ✨</button>
+      <button class="gallery-tab" data-filter="fun">Fun Times 🎊</button>
+      <button class="gallery-tab" data-filter="hangout">Hangouts 🌸</button>
+      <button class="gallery-tab" data-filter="special">Special Days 🎂</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Photos will be generated by JS with placeholder images -->
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">✕</button>
+      <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+      <button class="lightbox-next" id="lightboxNext" aria-label="Next photo">›</button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="Gallery photo" id="lightboxImg" />
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VIDEO GALLERY SECTION ========== -->
+  <section class="videos-section" id="videos">
+    <div class="section-header">
+      <span class="section-tag">🎬 Memories in Motion</span>
+      <h2 class="section-title reveal">Our Video Diary</h2>
+      <p class="section-subtitle reveal">Moments that move us, moments we'll always cherish 🎀</p>
+    </div>
+
+    <div class="video-grid">
+
+      <!-- Video 1: Placeholder - replace src with your own video -->
+      <div class="video-card reveal">
+        <div class="video-wrapper">
+          <div class="video-placeholder" data-video="v1">
+            <div class="video-thumb-overlay">
+              <div class="play-btn-big">▶</div>
+            </div>
+            <div class="video-placeholder-bg">🎬</div>
+          </div>
+          <!-- Uncomment and replace with real video: -->
+          <!-- <video controls poster="thumbnails/v1.jpg">
+            <source src="videos/video1.mp4" type="video/mp4" />
+          </video> -->
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Our Best Moments 🎊</h3>
+          <p class="video-desc">A compilation of all our beautiful memories together</p>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card reveal">
+        <div class="video-wrapper">
+          <div class="video-placeholder" data-video="v2">
+            <div class="video-thumb-overlay">
+              <div class="play-btn-big">▶</div>
+            </div>
+            <div class="video-placeholder-bg">🎂</div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">When We Said "Just 5 More Minutes" for 3 Hours 😂⏰</h3>
+          <p class="video-desc">The most special birthday we've ever had together</p>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card reveal">
+        <div class="video-wrapper">
+          <div class="video-placeholder" data-video="v3">
+            <div class="video-thumb-overlay">
+              <div class="play-btn-big">▶</div>
+            </div>
+            <div class="video-placeholder-bg">😂</div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Random Laughs 😂</h3>
+          <p class="video-desc">Because with you, every moment turns into a comedy show!</p>
+        </div>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="video-card reveal">
+        <div class="video-wrapper">
+          <div class="video-placeholder" data-video="v4">
+            <div class="video-thumb-overlay">
+              <div class="play-btn-big">▶</div>
+            </div>
+            <div class="video-placeholder-bg">🌸</div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Friendship Forever 🌸</h3>
+          <p class="video-desc">A tribute to an unbreakable bond</p>
+        </div>
+      </div>
+
+      <!-- Video 5 -->
+      <div class="video-card reveal">
+        <div class="video-wrapper">
+          <div class="video-placeholder" data-video="v5">
+            <div class="video-thumb-overlay">
+              <div class="play-btn-big">▶</div>
+            </div>
+            <div class="video-placeholder-bg">🌟</div>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Adventures Together 🌟</h3>
+          <p class="video-desc">Every journey is better with you by my side</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+      <div class="video-modal-content">
+        <button class="video-modal-close" id="videoModalClose">✕</button>
+        <div class="video-modal-inner" id="videoModalInner">
+          <p class="video-placeholder-msg">🎬 Add your video file here!<br><small>Replace the placeholder in index.html
+              with your video source.</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SPECIAL MESSAGE SECTION ========== -->
+  <section class="message-section" id="message">
+    <div class="message-bg" aria-hidden="true">
+      <div class="msg-shape msg-shape-1"></div>
+      <div class="msg-shape msg-shape-2"></div>
+    </div>
+
+    <div class="message-container">
+      <div class="section-header">
+        <span class="section-tag">💌 From the Heart</span>
+        <h2 class="section-title reveal">A Special Message</h2>
+        <p class="section-subtitle reveal">Words straight from the soul ✨</p>
+      </div>
+
+      <div class="message-card reveal">
+        <div class="message-quote-icon">"</div>
+        <div class="message-body">
+          <p class="message-greeting">My dearest Pratikhya 🌸</p>
+
+          <p class="message-para">
+            There are very few people in this world who can make you feel completely yourself — no pretending, no
+            filters, just pure, real, and beautiful. You are that person for me.
+          </p>
+
+          <p class="message-para">
+            Today, on your birthday, I just want to take a moment to tell you how grateful I am that our paths crossed.
+            Not because of chance, but because I truly believe that the universe handpicked you to walk beside me
+            through the most precious chapters of my life.
+          </p>
+
+          <p class="message-para">
+            You have been there in my laughter and in my silence. You've celebrated my smallest wins and stood like a
+            rock beside me in my toughest moments. You never judged me, never let me feel alone, and always —
+            <em>always</em> — found a way to make me smile even when I didn't want to.
+          </p>
+
+          <p class="message-para">
+            Our memories together are among my most treasured possessions. The late-night conversations, the random
+            adventures, the shared inside jokes that no one else would ever understand — those moments are woven so
+            deeply into who I am.
+          </p>
+
+          <p class="message-para">
+            You deserve all the happiness this world has to offer, Pratikhya. On this very special day, I hope you feel
+            how loved and appreciated you truly are — not just by me, but by everyone whose life you've touched with
+            your warmth and kindness.
+          </p>
+
+          <p class="message-para">
+            May this new year of your life be your most beautiful one yet. May every dream you've dared to dream start
+            coming true. May every day bring you the same joy you bring to everyone around you.
+          </p>
+
+          <p class="message-closing">
+            With all the friendship in my heart 🎉<br />
+            <strong>Happy Birthday, Pratikhya!</strong>
+          </p>
+        </div>
+        <div class="message-signature">— Your Best Friend, Abhijit 🌸</div>
+      </div>
+
+      <!-- Timeline of memories -->
+      <div class="memory-timeline reveal">
+        <h3 class="timeline-title">✨ Our Friendship Journey</h3>
+        <div class="timeline-items">
+          <div class="timeline-item">
+            <div class="timeline-dot">🌸</div>
+            <div class="timeline-content">
+              <h4>The Day We Met</h4>
+              <p>The beginning of something truly beautiful and forever</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">😂</div>
+            <div class="timeline-content">
+              <h4>First Inside Joke</h4>
+              <p>The laugh that never gets old, no matter how many times we revisit it</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">🌟</div>
+            <div class="timeline-content">
+              <h4>Adventures Begun</h4>
+              <p>The first of many adventures — with countless more to come</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">🎂</div>
+            <div class="timeline-content">
+              <h4>Today — Your Special Day</h4>
+              <p>Another year wiser, another year more wonderful 🎉</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SURPRISE SECTION ========== -->
+  <section class="surprise-section" id="surprise">
+    <div class="section-header">
+      <span class="section-tag">🎁 Something Special</span>
+      <h2 class="section-title reveal">A Little Surprise</h2>
+      <p class="section-subtitle reveal">Just for you, on your special day ✨</p>
+    </div>
+
+    <div class="surprise-container">
+      <div class="surprise-box reveal" id="surpriseBox">
+        <div class="surprise-box-lid" id="surpriseLid">
+          <div class="lid-ribbon"></div>
+        </div>
+        <div class="surprise-box-body">🎁</div>
+      </div>
+
+      <button class="surprise-btn" id="surpriseBtn" aria-label="Click for surprise">
+        <span class="btn-text">Click for Surprise 🎁</span>
+        <span class="btn-sparkle">✨</span>
+      </button>
+
+      <!-- Hidden surprise message -->
+      <div class="surprise-message" id="surpriseMessage" aria-live="polite">
+        <div class="surprise-inner">
+          <div class="surprise-stars" id="surpriseStars"></div>
+          <div class="surprise-emoji-burst" id="emojiBurst"></div>
+
+          <h3 class="surprise-heading">🌟 Just For You! 🌟</h3>
+
+          <div class="surprise-wish-card">
+            <p class="surprise-wish">May your day be filled with laughter,<br>
+              your heart with peace,<br>
+              your life with everything beautiful —<br>
+              <strong>just like YOU. 🎉</strong>
+            </p>
+          </div>
+
+          <div class="surprise-badges">
+            <span class="badge">🏆 Best Friend Award</span>
+            <span class="badge">🌸 Sunshine Person</span>
+            <span class="badge">⭐ Forever Awesome</span>
+            <span class="badge">🎊 Birthday Queen</span>
+          </div>
+
+          <p class="surprise-footer">You are irreplaceable, unforgettable,<br>and absolutely one of a kind. 🌟</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-emoji">🎉 🌸 🎂 🎀 ✨</div>
+      <h3 class="footer-title">Happy Birthday Pratikhya Sahoo!</h3>
+      <p class="footer-sub">10th May — A day the world got its sunshine ☀️</p>
+      <p class="footer-msg">Made with genuine friendship and endless joy 🌸</p>
+      <div class="footer-divider"></div>
+      <p class="footer-copy">© 2026 • Crafted with 💛 for the best friend ever</p>
+    </div>
+  </footer>
+
+  <!-- Main JS -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
