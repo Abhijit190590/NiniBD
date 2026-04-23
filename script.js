@@ -46,6 +46,12 @@ const GALLERY_PHOTOS = [
   { id: 28, src: 'photos/photo28.jpg', category: 'hangout', color: '#FFCBA4' },
   { id: 29, src: 'photos/photo29.jpg', category: 'fun', color: '#C8B6E2' },
   { id: 30, src: 'photos/photo30.jpg', category: 'special', color: '#FFB6C1' },
+  // Extra 5
+  { id: 31, src: 'photos/photo31.jpg', category: 'fun',     color: '#B5EAD7' },
+  { id: 32, src: 'photos/photo32.jpg', category: 'hangout', color: '#FFDAC1' },
+  { id: 33, src: 'photos/photo33.jpg', category: 'special', color: '#C8B6E2' },
+  { id: 34, src: 'photos/photo34.jpg', category: 'fun',     color: '#AED9E0' },
+  { id: 35, src: 'photos/photo35.jpg', category: 'hangout', color: '#FFB6C1' },
 ];
 
 /* ============================================================
@@ -273,9 +279,10 @@ function initGallery() {
   const lbPrev = $('#lightboxPrev');
   const lbNext = $('#lightboxNext');
 
-  let currentFilter = 'all';
-  let filteredPhotos = [...GALLERY_PHOTOS];
-  let currentIndex = 0;
+  let currentFilter  = 'all';
+  // Shuffle photos on load for a fresh look every visit
+  let filteredPhotos = [...GALLERY_PHOTOS].sort(() => Math.random() - 0.5);
+  let currentIndex   = 0;
 
   // Build placeholder color gradient image URL
   function photoSrc(photo) {
@@ -674,7 +681,7 @@ function initStats() {
 document.addEventListener('DOMContentLoaded', () => {
   // ---- Splash overlay → triggers music on enter ----
   const splashOverlay = $('#splashOverlay');
-  const splashBtn     = $('#splashBtn');
+  const splashBtn = $('#splashBtn');
 
   if (splashBtn) {
     splashBtn.addEventListener('click', () => {
@@ -682,16 +689,26 @@ document.addEventListener('DOMContentLoaded', () => {
       splashOverlay.classList.add('hidden');
 
       // Start music — this is a real user gesture, so browsers WILL allow it
-      const audio     = $('#bgMusic');
-      const musicBtn  = $('#musicToggle');
-      const label     = musicBtn && musicBtn.querySelector('.music-label');
-      const icon      = musicBtn && musicBtn.querySelector('.music-icon');
+      const audio = $('#bgMusic');
+      const musicBtn = $('#musicToggle');
+      const label = musicBtn && musicBtn.querySelector('.music-label');
+      const icon = musicBtn && musicBtn.querySelector('.music-icon');
 
       audio.play().then(() => {
         if (musicBtn) musicBtn.classList.add('playing');
         if (label) label.textContent = 'Pause Music';
-        if (icon)  icon.textContent  = '🎶';
-      }).catch(() => {});
+        if (icon) icon.textContent = '🎶';
+      }).catch(() => { });
+
+      // Re-trigger reveal for all elements now that splash is gone
+      setTimeout(() => {
+        $$('.reveal, .reveal-delay-1, .reveal-delay-2, .reveal-delay-3, .reveal-delay-4, .reveal-delay-5').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            el.classList.add('visible');
+          }
+        });
+      }, 100);
     });
   }
 
