@@ -444,6 +444,12 @@ function initVideos() {
 
   $$('video').forEach(vid => {
     vid.addEventListener('play', () => {
+      $$('video').forEach(otherVid => {
+        if (otherVid !== vid && !otherVid.paused) {
+          otherVid.pause();
+        }
+      });
+
       if (bgMusic && !bgMusic.paused) {
         bgMusic.pause();
         if (musicBtn) musicBtn.classList.remove('playing');
